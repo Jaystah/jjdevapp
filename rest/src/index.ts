@@ -1,10 +1,14 @@
-import express from 'express';
-import users from './users/user';
-
-const app = express();
+import express, {Express} from 'express';
+import {Database} from './db';
+const App: Express = express();
+require('dotenv').config();
 const PORT = process.env.PORT || 8083;
+new Database();
+require('./schemas/User');
+App.use(express.json());
+import users from './users/user';
+App.use('/users', users);
 
-app.use('/users', users);
-app.listen(PORT, () => {
+App.listen(PORT, () => {
   console.log(`Listen to PORT: ${PORT}`);
 });
