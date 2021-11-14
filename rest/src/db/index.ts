@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-export class Database {
+export class DatabaseConnection {
   private username = process.env.MONGO_USERNAME;
   private password = process.env.MONGO_PASSWORD;
   private connectionString = `mongodb+srv://${this.username}:${this.password}@jjdevdata.igqnk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
